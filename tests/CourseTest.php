@@ -22,9 +22,11 @@
         function testGetName()
         {
             //Arrange
+            $id = 1;
             $name = "History";
             $number= 101;
-            $test_course = new Course($name, $number);
+            $test_course = new Course($name, $number, $id);
+            $test_course->save();
 
             //Act
             $result = $test_course->getName();
@@ -36,9 +38,11 @@
         function testSetName()
         {
             //Arrange
+            $id = 1;
             $name = "History";
             $number= 101;
-            $test_course = new Course($name, $number);
+            $test_course = new Course($name, $number, $id);
+            $test_course->save();
 
             //Act
             $test_course->setName("Science");
@@ -51,24 +55,25 @@
         function testGetId()
         {
             //Arrange
-            $name = "Biology";
-            $number= 101;
             $id = 1;
+            $name = "History";
+            $number= 101;
             $test_course = new Course($name, $number, $id);
+            $test_course->save();
 
             //Act
             $result = $test_course->getId();
 
             //Assert
-            $this->assertEquals(1, $result);
+            $this->assertEquals(true, is_numeric($result));
         }
 
         function testSave()
         {
             //Arrange
-            $name = "Biology";
-            $number= 101;
             $id = 1;
+            $name = "History";
+            $number= 101;
             $test_course = new Course($name, $number, $id);
             $test_course->save();
 
@@ -82,17 +87,15 @@
         function testUpdate()
         {
             //Arrange
-            $name = "Biology";
-            $number= 101;
             $id = 1;
+            $name = "History";
+            $number= 101;
             $test_course = new Course($name, $number, $id);
             $test_course->save();
 
-            $new_name = "Auto";
-            $new_name = 201;
-
             //Act
-            $test_course->update($new_name, $new_number);
+            $new_name = "Auto";
+            $test_course->update($new_name);
 
             //Assert
             $this->assertEquals("Auto", $test_course->getName());
@@ -101,14 +104,14 @@
         function testDeleteCourse()
         {
             //Arrange
-            $name = "Biology";
-            $number= 101;
             $id = 1;
+            $name = "History";
+            $number= 101;
             $test_course = new Course($name, $number, $id);
             $test_course->save();
 
             $name2 = "Auto";
-            $number= 101;
+            $number2= 102;
             $id2 = 2;
             $test_course2 = new Course($name2, $number2, $id2);
             $test_course2->save();
@@ -123,16 +126,15 @@
         function testGetAll()
         {
             //Arrange
-            $name = "Biology";
-            $number = 101;
             $id = 1;
-
-            $name2 = "Auto";
-            $number2 = 101;
-            $id2 = 2;
-
+            $name = "History";
+            $number= 101;
             $test_course = new Course($name, $number, $id);
             $test_course->save();
+
+            $name2 = "Auto";
+            $number2= 102;
+            $id2 = 2;
             $test_course2 = new Course($name2, $number2, $id2);
             $test_course2->save();
 
@@ -146,16 +148,15 @@
         function testDeleteAll()
         {
             //Arrange
-            $name = "Biology";
-            $number = 101;
             $id = 1;
-
-            $name2 = "Auto";
-            $number2 = 101;
-            $id2 = 2;
-
+            $name = "History";
+            $number= 101;
             $test_course = new Course($name, $number, $id);
             $test_course->save();
+
+            $name2 = "Auto";
+            $number2= 102;
+            $id2 = 2;
             $test_course2 = new Course($name2, $number2, $id2);
             $test_course2->save();
 
@@ -170,14 +171,14 @@
         function testFind()
         {
             //Arrange
-            $name = "Biology";
-            $number = 101;
             $id = 1;
+            $name = "History";
+            $number= 101;
             $test_course = new Course($name, $number, $id);
             $test_course->save();
 
             $name2 = "Auto";
-            $number2 = 101;
+            $number2= 102;
             $id2 = 2;
             $test_course2 = new Course($name2, $number2, $id2);
             $test_course2->save();
@@ -192,16 +193,16 @@
         function testAddStudent()
         {
             //Arrange
-            $name = "Biology";
-            $number = 101;
             $id = 1;
+            $name = "History";
+            $number= 101;
             $test_course = new Course($name, $number, $id);
             $test_course->save();
 
             $name = "Elliot Michaels";
             $date = "2015-08-03";
-            $id2 = 2;
-            $test_student = new Student($name, $date, $id2);
+            $id = 1;
+            $test_student = new Student($name, $date, $id);
             $test_student->save();
 
             //Act
@@ -214,22 +215,22 @@
         function testGetStudents()
         {
             //Arrange
-            $name = "Biology";
-            $number = 101;
             $id = 1;
-            $test_course = new Course($name, $id);
+            $name = "History";
+            $number= 101;
+            $test_course = new Course($name, $number, $id);
             $test_course->save();
 
             $name = "Elliot Michaels";
             $date = "2015-08-03";
-            $id2 = 2;
-            $test_student = new Student($name, $date, $id2);
+            $id = 1;
+            $test_student = new Student($name, $date, $id);
             $test_student->save();
 
             $name2 = "Agatha Heterodyne";
             $date2 = "1866-04-06";
-            $id3 = 3;
-            $test_student2 = new Student($name2, $date2, $id3);
+            $id2 = 2;
+            $test_student2 = new Student($name2, $date2, $id2);
             $test_student2->save();
 
             //Act
@@ -243,16 +244,16 @@
         function testDelete()
         {
             //Arrange
-            $name = "Biology";
-            $number = 101;
             $id = 1;
+            $name = "History";
+            $number= 101;
             $test_course = new Course($name, $number, $id);
             $test_course->save();
 
             $name = "Elliot Michaels";
             $date = "2015-08-03";
-            $id2 = 2;
-            $test_student = new Student($name, $date, $id2);
+            $id = 1;
+            $test_student = new Student($id, $name, $date);
             $test_student->save();
 
             //Act

@@ -26,7 +26,8 @@
             //Arrange
             $name = "Elliot Michaels";
             $date = "2015-08-03";
-            $test_student = new Student($name, $date);
+            $id = 1;
+            $test_student = new Student($name, $date, $id);
 
             //Act
             $result = $test_student->getName();
@@ -40,7 +41,8 @@
             //Arrange
             $name = "Elliot Michaels";
             $date = "2015-08-03";
-            $test_student = new Student($name, $date);
+            $id = 1;
+            $test_student = new Student($name, $date, $id);
 
             //Act
             $test_student->setName("Elliot Michaels");
@@ -56,8 +58,10 @@
             $name = "Agatha Heterodyne";
             $date = "1866-02-06";
             $test_student = new Student($name, $date, $id);
+
             //Act
             $result = $test_student->getId();
+
             //Assert
             $this->assertEquals(1, $result);
         }
@@ -80,8 +84,8 @@
 
         function testSaveSetsId()
         {
-            $name = "Agatha Heterodyne";
-            $date = "1866-02-06";
+            $name = "Elliot Michaels";
+            $date = "2015-08-03";
             $id = 1;
             $test_student = new Student($name, $date, $id);
 
@@ -95,8 +99,8 @@
         function testGetAll()
         {
             //Arrange
-            $name = "Agatha Heterodyne";
-            $date = "1866-02-06";
+            $name = "Elliot Michaels";
+            $date = "2015-08-03";
             $id = 1;
             $test_student = new Student($name, $date, $id);
             $test_student->save();
@@ -104,11 +108,12 @@
             $name2 = "Drake Michaels";
             $date2 = "2011-02-02";
             $id2 = 2;
-            $test_student2 = new Student($name2, $id2);
+            $test_student2 = new Student($name2, $date2, $id2);
             $test_student2->save();
 
             //Act
             $result = Student::getAll();
+
             //Assert
             $this->assertEquals([$test_student, $test_student2], $result);
         }
@@ -116,8 +121,8 @@
         function testDeleteAll()
         {
             //Arrange
-            $name = "Agatha Heterodyne";
-            $date = "1866-02-06";
+            $name = "Elliot Michaels";
+            $date = "2015-08-03";
             $id = 1;
             $test_student = new Student($name, $date, $id);
             $test_student->save();
@@ -125,7 +130,7 @@
             $name2 = "Drake Michaels";
             $date2 = "2011-02-02";
             $id2 = 2;
-            $test_student2 = new Student($name2, $id2);
+            $test_student2 = new Student($name2, $date2, $id2);
             $test_student2->save();
 
             //Act
@@ -138,17 +143,17 @@
 
         function testFind()
         {
-            //Assert
+            //Arrange
             $name = "Elliot Michaels";
-            $id = 1;
             $date = "2015-08-03";
+            $id = 1;
             $test_student = new Student($name, $date, $id);
             $test_student->save();
 
-            $name2 = "Agatha Heterodyne";
-            $date2 = "1866-02-06";
+            $name2 = "Drake Michaels";
+            $date2 = "2011-02-02";
             $id2 = 2;
-            $test_student2 = new Student($name2, $id2);
+            $test_student2 = new Student($name2, $date2, $id2);
             $test_student2->save();
 
             //Act
@@ -166,6 +171,7 @@
             $id = 1;
             $test_student = new Student($name, $date, $id);
             $test_student->save();
+
             $new_name = "Drake Michaels";
 
             //Act
@@ -184,8 +190,8 @@
             $test_student = new Student($name, $date, $id);
             $test_student->save();
 
-            $name2 = "Agatha Heterodyne";
-            $date2 = "2012-02-06";
+            $name2 = "Drake Michaels";
+            $date2 = "2011-02-02";
             $id2 = 2;
             $test_student2 = new Student($name2, $date2, $id2);
             $test_student2->save();
@@ -206,10 +212,10 @@
             $test_course = new Course($name, $number, $id);
             $test_course->save();
 
-            $name = "Auto";
-            $number2 = 101;
-            $id2 = 2;
-            $test_student = new Student($name, $date, $id2);
+            $name = "Elliot Michaels";
+            $date = "2015-08-03";
+            $id = 1;
+            $test_student = new Student($name, $date, $id);
             $test_student->save();
 
             //Act
@@ -230,13 +236,13 @@
             $name2 = "Physics";
             $number2 = 101;
             $id2 = 2;
-            $test_course2 = new Course($name2, $id2);
+            $test_course2 = new Course($name2, $number2, $id2);
             $test_course2->save();
 
-            $name3 = "Auto";
-            $number3 = 101;
-            $id3 = 3;
-            $test_student = new Student($name, $date, $id3);
+            $name = "Elliot Michaels";
+            $date = "2015-08-03";
+            $id = 1;
+            $test_student = new Student($name, $date, $id);
             $test_student->save();
 
             //Act
@@ -255,15 +261,16 @@
             $test_course = new Course($name, $number, $id);
             $test_course->save();
 
-            $name = "Auto";
-            $number2 = 101;
-            $id2 = 2;
-            $test_student = new Student($name, $date, $id2);
+            $name = "Elliot Michaels";
+            $date = "2015-08-03";
+            $id = 1;
+            $test_student = new Student($name, $date, $id);
             $test_student->save();
 
             //Act
             $test_student->addCourse($test_course);
             $test_student->delete();
+
             //Assert
             $this->assertEquals([], $test_course->getStudents());
         }
