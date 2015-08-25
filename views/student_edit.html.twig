@@ -1,16 +1,16 @@
 <html>
     <head>
-        <title>Course Update</title>
+        <title>Student Edit</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
     </head>
     <body>
         <div class="container">
-            <h1>Update the &#8216;{{ course.getName }}&#8217; Course </h1>
+            <h1>Update &#8216;{{ student.getName }}&#8217;</h1>
 
-            <form action="/courses/{{ course.getId }}" method="post">
+            <form action="/students/{{ student.getId }}" method="post">
               <input name="_method" type="hidden" value="patch">
 
-              <label for="name">Rename your course:</label>
+              <label for="name">Update your student name:</label>
               <input id="name" name="name" type="text">
 
               <button type="submit">Update</button>

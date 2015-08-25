@@ -5,7 +5,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>{{ course.getName }}</h1>
+        <h1>{{ course.getName }} {{ course.getNumber}}</h1>
 
         {% if students is not empty %}
             <p>Here are the students in this course:</p>
